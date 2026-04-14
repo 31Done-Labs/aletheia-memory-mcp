@@ -1,7 +1,7 @@
 # Aletheia_3: Architectural Queries & Ambiguities
 
 ## 1. Data Granularity & Lifecycle
-- **Question**: At what point does a "raw event" (e.g., a log entry) become a "knowledge fragment" (a permanent vertex)? Do we need a predefined threshold for frequency or significance, or will this be driven by an LLM-based summarization agent?
+- **Resolution**: A secondary, LLM-driven "Distillation Process" (running on The Dragon) will periodically scan the event buffer. When the agent identifies a pattern, a significant milestone, or a high-density cluster of related events, it will "promote" that information into a permanent, structured Knowledge Fragment. We will rely on semantic judgment, though we must identify a highly capable model for this role.
 - **Ambiguity**: How do we handle the "decay" of information? Should old, unverified events be automatically moved to an archival state, or does the graph only grow?
 
 ## 2. Embedding Strategy
@@ -10,7 +10,7 @@
 
 ## 3. Schema & Relationship Complexity
 - **Question**: How deep should the "Graph Traversal" requirement go? Are we focusing on 1-hop or 2-hop relationships for real-time queries, or do we need the ability to perform deep, multi-hop reasoning?
-- **Ambiguity**: How do we define the "Edge" types? Should we start with a minimal set (e.g., `part_of`, `related_to`, `occurred_at`) and expand, or do we need a highly complex, pre-defined ontology?
+- **Ambiguity**: How do we define the "Edge" types? Should we start with a hyper-minimal set (e.g., `part_of`, `related_to`, `occurred_at`) and expand, or do we need a highly complex, pre-defined ontology?
 
 ## 4. Integration & Interface
 - **Question**: For the "Multi-Modal Ingestion," what is the required capability for image processing? Are we storing only the metadata/tags, or are we performing visual feature extraction (vectors) for the images themselves?
