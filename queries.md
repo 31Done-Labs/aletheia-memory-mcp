@@ -9,8 +9,10 @@
 - **Resolution (Resource Constraint)**: Asynchronous Distillation (The 'Dream' Protocol): The distillation of raw events into permanent knowledge fragments shall be executed as an asynchronous, low-priority background process. This process must be architected to ensure that the computational overhead of semantic analysis and graph updates does not interfere with the real-time inference latency of the primary agent.
 
 ## 3. Schema & Relationship Complexity
-- **Question**: How deep should the "Graph Traversal" requirement go? Are we focusing on 1-hop or 2-hop relationships for real-time queries, or do we need the ability to perform deep, multi-hop reasoning?
-- **Ambiguity**: How do we define the "Edge" types? Should we start with a hyper-minimal set (e.g., `part_of`, `related_to`, `occurred_at`) and expand, or do we need a highly complex, pre-defined ontology?
+- **Resolution (Hierarchical Traversal)**: The system shall support a dual-depth retrieval architecture.
+    - **Operational Depth**: Real-time queries must prioritize low-latency, shallow traversals (1-2 hops) to ensure immediate responsiveness for standard agent tasks.
+    - **Analytical Depth**: The system must support deep, multi-hop traversals for complex, research-oriented queries, capable of traversing the full complexity of the graph at the cost of higher latency.
+- **Resolution (Evolving Ontology)**: We will adopt a "Schema-on-Write, Evolving Ontology" approach. The system will start with a Minimal Core Ontology (e.g., `part_of`, `related_to`, `occurred_at`, `authored_by`) to maintain simplicity and performance. However, the architecture must be extensible, allowing the distillation pipeline to dynamically introduce new edge types as new relationships are identified, evolving the ontology without requiring schema migrations.
 
 ## 4. Integration & Interface
 - **Question**: For the "Multi-Modal Ingestion," what is the required capability for image processing? Are we storing only the metadata/tags, or are we performing visual feature extraction (vectors) for the images themselves?
