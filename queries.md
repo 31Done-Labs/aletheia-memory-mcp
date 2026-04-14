@@ -6,8 +6,7 @@
 
 ## 2. Embedding Strategy
 - **Resolution (Multi-Modal Pipeline)**: The ingestion architecture shall be designed to support specialized embedding paths. The system must be capable of routing different data types (e.g., technical code, conversational text, and potentially future modalities like audio or vision) to specialized embedding models to ensure the highest fidelity of semantic representation within the vector space.
-- **Resource Constraint**: How much computational overhead can we allocate to the "Distillation Pipeline" on The 
-Dragon without impacting real-time inference latency?
+- **Resolution (Resource Constraint)**: Asynchronous Distillation (The 'Dream' Protocol): The distillation of raw events into permanent knowledge fragments shall be executed as an asynchronous, low-priority background process. This process must be architected to ensure that the computational overhead of semantic analysis and graph updates does not interfere with the real-time inference latency of the primary agent.
 
 ## 3. Schema & Relationship Complexity
 - **Question**: How deep should the "Graph Traversal" requirement go? Are we focusing on 1-hop or 2-hop relationships for real-time queries, or do we need the ability to perform deep, multi-hop reasoning?
