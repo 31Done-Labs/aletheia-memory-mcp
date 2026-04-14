@@ -2,7 +2,7 @@
 
 ## 1. Data Granularity & Lifecycle
 - **Resolution**: A secondary, LLM-driven "Distillation Process" (running on The Dragon) will periodically scan the event buffer. When the agent identifies a pattern, a significant milestone, or a high-density cluster of related events, it will "promote" that information into a permanent, structured Knowledge Fragment. We will rely on semantic judgment, though we must identify a highly capable model for this role.
-- **Ambiguity**: How do we handle the "decay" of information? Should old, unverified events be automatically moved to an archival state, or does the graph only grow?
+- **Resolution (Persistence)**: The system shall prioritize the continuous growth of the graph, maintaining all event data within the primary active structure to preserve the full historical context. However, the architecture must be hyper-aware of future scalability, supporting a transition to a Tiered Retention Strategy (Archival/Cold Storage) should traversal complexity impact performance.
 
 ## 2. Embedding Strategy
 - **Question**: Will we utilize a single, global embedding model for all text, or should different types of data (e.g., code vs. personal journals) use specialized embedding models to capture different semantic nuances?
