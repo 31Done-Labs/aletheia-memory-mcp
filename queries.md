@@ -5,8 +5,9 @@
 - **Resolution (Persistence)**: The system shall prioritize the continuous growth of the graph, maintaining all event data within the primary active structure to preserve the full historical context. However, the architecture must be hyper-aware of future scalability, supporting a transition to a Tiered Retention Strategy (Archival/Cold Storage) should traversal complexity impact performance.
 
 ## 2. Embedding Strategy
-- **Question**: Will we utilize a single, global embedding model for all text, or should different types of data (e.g., code vs. personal journals) use specialized embedding models to capture different semantic nuances?
-- **Resource Constraint**: How much computational overhead can we allocate to the "Distillation Pipeline" on The Dragon without impacting real-time inference latency?
+- **Resolution (Multi-Modal Pipeline)**: The ingestion architecture shall be designed to support specialized embedding paths. The system must be capable of routing different data types (e.g., technical code, conversational text, and potentially future modalities like audio or vision) to specialized embedding models to ensure the highest fidelity of semantic representation within the vector space.
+- **Resource Constraint**: How much computational overhead can we allocate to the "Distillation Pipeline" on The 
+Dragon without impacting real-time inference latency?
 
 ## 3. Schema & Relationship Complexity
 - **Question**: How deep should the "Graph Traversal" requirement go? Are we focusing on 1-hop or 2-hop relationships for real-time queries, or do we need the ability to perform deep, multi-hop reasoning?
