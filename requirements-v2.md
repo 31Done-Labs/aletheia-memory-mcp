@@ -37,7 +37,7 @@ The system must support a "triple-threat" query capability:
 
 ### 3.5 Integration & Interface
 - **Semantic Translation Layer**: The MCP interface will use high-level, intent-based commands (e.g., `find_related_events`), with a middle-layer translating these into complex AQL traversals.
-- **Multi-Modal Interface**: Implementation of a Hybrid Vector-Metadata approach where images undergo Tier 1 extraction (textual descriptors via VLM) and high-signancy images undergo Tier 2 extraction (dense vector embedding).
+- **Multi-Modal Interface**: Implementation of a Hybrid Vector-Metadata approach where images undergo Tier 1 extraction (textual descriptors via VLM) and high-significance images undergo Tier 2 extraction (dense vector embedding).
 
 ## 4. Non-Functional Requirements
 
