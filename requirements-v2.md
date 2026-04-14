@@ -25,7 +25,7 @@ The system must support a "triple-threat" query capability:
 - **Multi-Modal Pipeline**: The architecture shall support specialized embedding paths for different data types (e.g., technical code vs. conversational text) to ensure high-fidelity semantic representation.
 
 ### 3.3 Knowledge Distillation (The "Evolution" Pillar)
-- **Summarization Pipelines**: Scheduled tasks to analyze high-frequency event logs and generate "distunned" vertices representing long-term memory.
+- **Summarization Pipelines**: Scheduled tasks to analyze high-frequency event logs and generate "distilled" vertices representing long-term memory.
 - **Asynchronous Distillation (The 'Dream' Protocol)**: The distillation of raw events into permanent knowledge fragments shall be executed as an asynchronous, low-priority background process to ensure that computational overhead does not interfere with real-time inference latency.
 - **Lifecycle Management**: Mechanisms to archive or prune low-significance, high-volume telemetry data to prevent graph bloating.
 
