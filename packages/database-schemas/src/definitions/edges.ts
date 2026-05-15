@@ -17,7 +17,7 @@ export const EdgeSchema = z.object({
   _to: z.string(),
   type: EdgeTypeSchema,
   weight: z.number().min(0).max(1).default(1),
-  metadata: z.record(z.any()).default({}),
+  metadata: z.record(z.unknown()).default({}),
 });
 
 export type Edge = z.infer<typeof EdgeSchema>;

@@ -7,7 +7,7 @@ export const NodeSchema = z.object({
   _id: z.string().optional(),
   name: z.string(),
   type: NodeTypeSchema,
-  metadata: z.record(z.any()).default({}),
+  metadata: z.record(z.unknown()).default({}),
 });
 
 export type Node = z.infer<typeof NodeSchema>;
