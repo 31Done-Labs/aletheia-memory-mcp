@@ -7,7 +7,7 @@ export const KnowledgeFragmentSchema = z.object({
   source_event_ids: z.array(z.string()),
   created_at: z.string().datetime(),
   embedding: z.array(z.number()).length(1536).optional(),
-  metadata: z.record(z.any()).default({}),
+  metadata: z.record(z.unknown()).default({}),
 });
 
 export type KnowledgeFragment = z.infer<typeof KnowledgeFragmentSchema>;

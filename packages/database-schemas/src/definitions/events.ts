@@ -8,7 +8,7 @@ export const EventSchema = z.object({
   timestamp: z.string().datetime(),
   source: z.string(),
   embedding: z.array(z.number()).length(1536).optional(),
-  metadata: z.record(z.any()).default({}),
+  metadata: z.record(z.unknown()).default({}),
 });
 
 export type Event = z.infer<typeof EventSchema>;
