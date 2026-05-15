@@ -33,9 +33,7 @@ export class ArangoClient {
     const { url, user, dbName } = config.arango;
     const db = new Database({ url, databaseName: dbName });
     const token = await db.login(user, password);
-    if (this.instance) {
-      this.instance.useToken(token);
-    }
+    this.getInstance().useToken(token);
     return token;
   }
 }

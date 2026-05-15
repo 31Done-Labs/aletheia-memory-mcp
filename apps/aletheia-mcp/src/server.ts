@@ -60,7 +60,7 @@ export class AletheiaMcpServer {
           case 'search_memory':
             const searchParams = z.object({
               query: z.string(),
-              vector: z.array(z.number()).optional(),
+              vector: z.array(z.number()).length(1536).optional(),
               limit: z.number().optional()
             }).parse(args);
             return { content: [{ type: 'text', text: JSON.stringify(await this.memoryService.hybridSearch(searchParams)) }] };
@@ -76,6 +76,7 @@ export class AletheiaMcpServer {
             throw new Error(`Unknown tool: ${name}`);
         }
       } catch (error: any) {
+        console.error(`Error executing tool ${name}:`, error);
         return {
           isError: true,
           content: [{ type: 'text', text: error.message }],

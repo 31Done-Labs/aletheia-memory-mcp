@@ -34,7 +34,7 @@ try {
       user: process.env.ARANGO_USER,
       password: process.env.ARANGO_PASSWORD,
       jwtToken: process.env.ARANGO_JWT_TOKEN,
-      useJwt: process.env.ARANGO_USE_JWT === 'true',
+      useJwt: process.env.ARANGO_USE_JWT !== undefined ? process.env.ARANGO_USE_JWT === 'true' : undefined,
     },
     embeddings: {
       dimensions: process.env.EMBEDDING_DIMENSIONS ? parseInt(process.env.EMBEDDING_DIMENSIONS) : undefined,
