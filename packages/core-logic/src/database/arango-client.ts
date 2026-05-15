@@ -30,8 +30,8 @@ export class ArangoClient {
    * Helper to perform JWT login if needed
    */
   public static async login(password: string): Promise<string> {
-    const { url, user } = config.arango;
-    const db = new Database({ url });
+    const { url, user, dbName } = config.arango;
+    const db = new Database({ url, databaseName: dbName });
     const token = await db.login(user, password);
     if (this.instance) {
       this.instance.useToken(token);

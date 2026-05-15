@@ -79,7 +79,7 @@ export class MemoryService {
         )
         
         LET ftsScore = BM25(doc)
-        LET vectorScore = ${params.vector ? aql`COSINE_SIMILARITY(doc.embedding, ${params.vector})` : aql`0`}
+        LET vectorScore = ${params.vector ? aql`doc.embedding ? COSINE_SIMILARITY(doc.embedding, ${params.vector}) : 0` : aql`0`}
         
         LET finalScore = (ftsScore * ${ftsWeight}) + (vectorScore * ${vectorWeight})
         

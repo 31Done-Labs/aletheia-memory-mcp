@@ -1,3 +1,4 @@
+import crypto from 'node:crypto';
 import express from 'express';
 import cors from 'cors';
 import { SSEServerTransport } from '@modelcontextprotocol/sdk/server/sse.js';
@@ -5,7 +6,7 @@ import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import { AletheiaMcpServer } from './server.js';
 
 const app = express();
-const port = 42061;
+const port = process.env.PORT ? parseInt(process.env.PORT) : 42061;
 
 // Allow all origins as requested
 app.use(cors());

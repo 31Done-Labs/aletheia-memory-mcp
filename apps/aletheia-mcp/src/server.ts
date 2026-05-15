@@ -50,7 +50,12 @@ export class AletheiaMcpServer {
             return { content: [{ type: 'text', text: JSON.stringify(await this.memoryService.saveEvent(eventParams)) }] };
           
           case 'upsert_entity':
-            return { content: [{ type: 'text', text: JSON.stringify(await this.memoryService.upsertEntity(args)) }] };
+            const entityParams = z.object({
+              name: z.string(),
+              type: z.enum(['user', 'project', 'node', 'agent', 'tag']),
+              metadata: z.record(z.unknown()).optional(),
+            }).parse(args);
+            return { content: [{ type: 'text', text: JSON.stringify(await this.memoryService.upsertEntity(entityParams)) }] };
           
           case 'search_memory':
             const searchParams = z.object({
