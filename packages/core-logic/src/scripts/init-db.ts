@@ -4,7 +4,7 @@ import { config } from '@aletheia/config';
 async function initialize() {
   console.log("Initializing ArangoDB for Aletheia_3...");
   
-  const db = await ArangoClient.getInstance();
+  const db = ArangoClient.getInstance();
   const collections = ['Nodes', 'Events', 'KnowledgeFragments'];
   const edgeCollections = ['Edges'];
 

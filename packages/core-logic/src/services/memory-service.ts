@@ -14,7 +14,7 @@ export class MemoryService {
    */
   async saveEvent(eventData: any): Promise<Event> {
     const event = EventSchema.parse(eventData);
-    const db = await ArangoClient.getInstance();
+    const db = ArangoClient.getInstance();
     const collection = db.collection('Events');
     
     const meta = await collection.save(event);
@@ -26,7 +26,7 @@ export class MemoryService {
    */
   async upsertEntity(nodeData: any): Promise<Node> {
     const node = NodeSchema.parse(nodeData);
-    const db = await ArangoClient.getInstance();
+    const db = ArangoClient.getInstance();
     const collection = db.collection('Nodes');
     
     const query = aql`
@@ -46,7 +46,7 @@ export class MemoryService {
    */
   async link(edgeData: any): Promise<Edge> {
     const edge = EdgeSchema.parse(edgeData);
-    const db = await ArangoClient.getInstance();
+    const db = ArangoClient.getInstance();
     const collection = db.collection('Edges');
     
     const meta = await collection.save(edge);
@@ -63,7 +63,7 @@ export class MemoryService {
     limit?: number;
     threshold?: number;
   }) {
-    const db = await ArangoClient.getInstance();
+    const db = ArangoClient.getInstance();
     const { vectorWeight, ftsWeight } = config.search;
     const limit = params.limit || 10;
 
@@ -72,7 +72,9 @@ export class MemoryService {
     const searchQuery = aql`
       FOR doc IN AletheiaSearch
         SEARCH ANALYZER(
-          TOKENS(${params.query}, "text_en") ALL == doc.content,
+          TOKENS(${params.query}, "text_en") ALL == doc.content OR
+          TOKENS(${params.query}, "text_en") ALL == doc.summary OR
+          TOKENS(${params.query}, "text_en") ALL == doc.name,
           "text_en"
         )
         
@@ -94,7 +96,7 @@ export class MemoryService {
    * Multi-hop Context Retrieval
    */
   async getContext(vertexId: string, depth: number = 2) {
-    const db = await ArangoClient.getInstance();
+    const db = ArangoClient.getInstance();
     const query = aql`
       FOR v, e, p IN 1..${depth} ANY ${vertexId} Edges
         RETURN { vertex: v, edge: e }

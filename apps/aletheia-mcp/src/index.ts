@@ -11,21 +11,26 @@ const port = 42061;
 app.use(cors());
 
 const mcpServer = new AletheiaMcpServer();
-let transport: SSEServerTransport | null = null;
+const transports = new Map<string, SSEServerTransport>();
 
 // SSE Endpoint
 app.get('/mcp', async (req, res) => {
-  console.log('New SSE connection established');
-  transport = new SSEServerTransport('/messages', res);
+  const sessionId = crypto.randomUUID();
+  console.log(`New SSE connection established: ${sessionId}`);
+  const transport = new SSEServerTransport(`/messages?sessionId=${sessionId}`, res);
+  transports.set(sessionId, transport);
+  res.on('close', () => transports.delete(sessionId));
   await mcpServer.getMcpServer().connect(transport);
 });
 
 // Message Endpoint for SSE
 app.post('/messages', express.json(), async (req, res) => {
+  const sessionId = req.query.sessionId as string;
+  const transport = transports.get(sessionId);
   if (transport) {
     await transport.handlePostMessage(req, res);
   } else {
-    res.status(400).send('No active SSE transport');
+    res.status(400).send('No active SSE transport for this session');
   }
 });
 

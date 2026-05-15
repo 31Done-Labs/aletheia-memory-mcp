@@ -47,12 +47,7 @@ try {
     env: process.env.NODE_ENV,
   });
 } catch (error) {
-  if (error instanceof z.ZodError) {
-    console.error('❌ Invalid configuration:', JSON.stringify(error.format(), null, 2));
-  } else {
-    console.error('❌ Failed to parse configuration:', error);
-  }
-  process.exit(1);
+  throw new Error(`Configuration validation failed: ${error instanceof z.ZodError ? JSON.stringify(error.format()) : error}`);
 }
 
 export const config = parsedConfig;

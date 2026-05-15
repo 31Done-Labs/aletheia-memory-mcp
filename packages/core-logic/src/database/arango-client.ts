@@ -4,7 +4,7 @@ import { config } from '@aletheia/config';
 export class ArangoClient {
   private static instance: Database;
 
-  public static async getInstance(): Promise<Database> {
+  public static getInstance(): Database {
     if (!this.instance) {
       const { url, dbName, user, password, jwtToken, useJwt } = config.arango;
 
