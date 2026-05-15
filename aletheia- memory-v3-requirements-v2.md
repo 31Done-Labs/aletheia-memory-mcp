@@ -1,4 +1,4 @@
-# Aletheia_3: Requirement Specification v2
+# Aletheia v.3.x: Requirement Specification (Document v2.0)
 
 ## 1. Overview
 Aletheia_3 is a next-generation, multi-modal memory architecture designed to serve as the long-term cognitive foundation for the Aki agent ecosystem. It utilizes a unified graph-database approach to manage complex relationships, semantic embeddings, and full-text search capabilities.

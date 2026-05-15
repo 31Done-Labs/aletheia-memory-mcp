@@ -1,9 +1,11 @@
 {
   "name": "@aletheia/database-schemas",
   "version": "1.0.0",
+  "type": "module",
   "description": "Zod schemas and TypeScript types for Aletheia_3 ArangoDB collections",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
   "scripts": {
     "build": "tsc",
     "test": "jest"

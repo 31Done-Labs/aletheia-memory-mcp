@@ -1,0 +1,17 @@
+{
+  "name": "aletheia-memory-mcp-workspace",
+  "private": true,
+  "description": "Aletheia_3 Multi-Modal Memory Architecture",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "dev": "pnpm --filter aletheia-mcp dev"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "tsx": "^4.7.1"
+  }
+}
